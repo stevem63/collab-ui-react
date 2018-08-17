@@ -23,9 +23,9 @@ class EditableTextfield extends React.PureComponent {
     }
   }
 
-  handleDoneEditing = value => {
+  handleDoneEditing = e => {
     const { handleDoneEditing } = this.props;
-
+    let value = (e.target && e.target.value) ? value = e.target.value : value = e;
     this.setState({
       isEditing: false,
       inputText: value,
@@ -69,7 +69,7 @@ class EditableTextfield extends React.PureComponent {
         isEditing: false,
       });
     } else if (e.keyCode === 13) {
-      this.handleDoneEditing(e.target.value);
+      this.handleDoneEditing(e);
     }
   }
 
